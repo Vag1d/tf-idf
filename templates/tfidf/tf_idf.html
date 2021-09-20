@@ -1,0 +1,73 @@
+{% extends "tfidf/wrapper.html" %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+<h1>TF-IDF</h1><br>
+
+<form method="post" enctype="multipart/form-data">
+
+    {% if form %}
+        {{ form.title }}<br>
+        {{ form.file }}<br>
+        <button type="submit" class="btn btn-success">Send</button>
+        <span style="color: #ff4905;">{{ error }}</span>
+    {% endif %}
+
+<!--    {% if result %}-->
+<!--        <div>-->
+<!--            <table>-->
+<!--                <caption>Table</caption>-->
+<!--                <tr>-->
+<!--                    <th scope="col">Word</th>-->
+<!--                    <th scope="col">TF</th>-->
+<!--                    <th scope="col">TF-IDF</th>-->
+<!--                </tr>-->
+<!--                {% for index in result.indecies %}-->
+<!--                    <tr>-->
+<!--                        <td>{{ result.words_stats.Word|get_item:index }}</td>-->
+<!--                        <td>{{ result.words_stats.TF|get_item:index }}</td>-->
+<!--                        <td>{{ result.words_stats.TFIDF|get_item:index }}</td>-->
+<!--                    </tr>-->
+<!--                {% endfor %}-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    {% endif %}-->
+
+
+
+
+
+
+
+
+
+
+        {% if result %}
+        <div>
+            <table>
+                <table class="table">
+                <thead class="thead-dark">
+<!--                <caption>Table</caption>-->
+                <tr>
+                    <th scope="col">Word</th>
+                    <th scope="col">TF</th>
+                    <th scope="col">TF-IDF</th>
+                </tr>
+                {% for index in result.indecies %}
+                    <tr>
+                        <td>{{ result.words_stats.Word|get_item:index }}</td>
+                        <td>{{ result.words_stats.TF|get_item:index }}</td>
+                        <td>{{ result.words_stats.TFIDF|get_item:index }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+
+
+</form>
+
+
+{% endblock %}
